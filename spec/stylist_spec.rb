@@ -19,8 +19,10 @@ describe(Stylist) do
   end
   describe('.==') do
     it('two instances with the same name and id will be equal') do
-      stylist = Stylist.new(:name => 'Gwen')
-      expect(@stylist).to eq(stylist)
+      # stylist = Stylist.new(:name => 'Gwen')
+
+      @stylist.save
+      expect(Stylist.find(@stylist.id)).to eq(@stylist)
     end
   end
   describe('#save') do
@@ -57,8 +59,25 @@ describe(Stylist) do
   describe('#clients') do
     it('returns an array of clients for that stylist') do
       @stylist.save()
-      client = Client.new(:name => 'Bobby')
-      expect(@stylist.clients()).to eq(([@client, @client2]))
+      client = Client.new({:name => 'Bobby'})
+      client.save()
+      client2 = Client.new({:name => 'Laura'})
+      client2.save()
+      @stylist.add_client(client)
+      @stylist.add_client(client2)
+      expect(@stylist.clients()).to eq(([client, client2]))
+    end
+  end
+  describe('add_client') do
+    it('adds the stylist id to the client') do
+      @stylist.save
+      client = Client.new({:name => 'Bobby'})
+      client.save()
+      client2 = Client.new({:name => 'Laura'})
+      client2.save()
+      @stylist.add_client(client)
+      @stylist.add_client(client2)
+      expect(@stylist.clients()).to eq(([client, client2]))
     end
   end
 end

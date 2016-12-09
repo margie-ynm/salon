@@ -1,3 +1,5 @@
+
+
 class Stylist
 
   attr_reader(:name, :id)
@@ -37,4 +39,20 @@ class Stylist
     define_method(:delete) do
       DB.exec("DELETE FROM stylists WHERE id = #{@id};")
     end
+
+    define_method(:clients) do
+      stylist_client =[]
+      clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{@id};")
+      clients.each() do |client|
+        name = client.fetch('name')
+        id = client.fetch('id').to_i
+        stylist_id = client.fetch('stylist_id').to_i
+        stylist_client.push(Client.new({:name => name, :stylist_id => stylist_id, :id => id}))
+      end
+      stylist_client
+  end
+  define_method(:add_client) do |client|
+    client.update({:stylist_id => @id})
+  end
+
 end

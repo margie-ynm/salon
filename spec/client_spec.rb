@@ -53,6 +53,7 @@ describe(Client) do
       @client.save()
       expect(Client.all).to eq([@client])
       @client.delete()
+      expect(Client.all).to eq([])
     end
   end
 end

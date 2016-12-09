@@ -23,15 +23,15 @@ class Client
     end
 
     define_singleton_method(:find) do |id|
-      matches = Client.all.keep_if do |client|
-        client.id == id
-      end
-      matches.first
+
+      match = DB.exec("SELECT * FROM clients WHERE id = #{id};").first()
+        Client.new({:name => match.fetch('name'), :stylist_id => match.fetch('stylist_id').to_i, :id => match.fetch('id').to_i})
     end
 
     define_method(:update) do |attributes|
-      @name = attributes.fetch(:name)
-      DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{@id};")
+      @name = attributes.fetch(:name, @name)
+      @stylist_id = attributes.fetch(:stylist_id, @stylist_id)
+      DB.exec("UPDATE clients SET name = '#{@name}', stylist_id = #{@stylist_id or 'NULL'} WHERE id = #{@id};")
     end
 
     define_method(:delete) do
