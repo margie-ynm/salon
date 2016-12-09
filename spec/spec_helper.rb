@@ -5,7 +5,7 @@ require('pg')
 
 DB = PG.connect({:dbname => 'hair_salon_test'})
 
-Rspec.config do |config|
+RSpec.configure do |config|
   config.after(:each) do
     DB.exec('DELETE FROM stylists *;')
     DB.exec('DELETE FROM clients *;')
