@@ -23,9 +23,10 @@ class Client
     end
 
     define_singleton_method(:find) do |id|
-
-      match = DB.exec("SELECT * FROM clients WHERE id = #{id};").first()
-        Client.new({:name => match.fetch('name'), :stylist_id => match.fetch('stylist_id').to_i, :id => match.fetch('id').to_i})
+      matches = Client.all.keep_if do |client|
+        client.id == id
+      end
+      matches.first
     end
 
     define_method(:update) do |attributes|

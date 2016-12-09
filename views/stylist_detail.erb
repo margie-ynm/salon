@@ -11,4 +11,33 @@
   <input name="_method" type="hidden" value="delete">
   <button type="submit" class="btn">Delete stylist</button>
 </form>
-<a href="/stylists">Return Home</a>
+<hr>
+<% if @stylist.clients().any?() %>
+  <h3>Here are all the clients for this stylist:</h3>
+
+  <ul>
+    <% @stylist.clients().each() do |client| %>
+      <li><a href="/clients/<%= client.id %>"><%= client.name() %></a></li>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>There are no clients for this stylist.</p>
+  <% end %>
+
+<h3>Add a client to <%= @stylist.name() %> </h3>
+
+<form action="/stylists/<%= @stylist.id() %>" method="post">
+  <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+
+  <label for="new-client-name">Client Name:</label>
+  <input id="new-client-name" name="new-client-name" type="text">
+
+  <button type="submit" class="btn">Add client</button>
+</form>
+
+<hr>
+
+<div class="container">
+  <a href="/stylists">Return Home</a>
+</div>
