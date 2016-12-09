@@ -22,6 +22,8 @@ class Stylist
     define_method(:save) do
       result = DB.exec("INSERT INTO stylists (name) VALUES ('#{@name}') RETURNING id;")
       @id = result.first.fetch('id').to_i
+      #return self to chain methods
+      self
     end
 
     define_singleton_method(:find) do |id|
