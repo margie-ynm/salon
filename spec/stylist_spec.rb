@@ -47,4 +47,11 @@ describe(Stylist) do
       expect(@gwen.name).to eq('Shawna')
     end
   end
+  describe('#delete') do
+    it('lets you delete a stylist from database') do
+      @gwen.save()
+      expect(Stylist.all).to eq([@gwen])
+      @gwen.delete()
+    end
+  end
 end
