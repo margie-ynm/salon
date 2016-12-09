@@ -1,21 +1,23 @@
-<h1>All Stylists</h1>
+<h1>American Hair Lines</h1>
 
-<% if @stylists.any?() %>
-<h3>Below are the stylists for the hair salon</h3>
-<ul>
-<% @stylists.each do |stylist| %>
-  <li><a href="/stylists/<%= stylist.id %>"><%= stylist.name %></a></li>
-<% end %>
-</ul>
+<div class="card-content">
+  <% if @stylists.any?() %>
+  <h3>Below are the stylists for the hair salon</h3>
+  <ul>
+  <% @stylists.each do |stylist| %>
+    <li><a href="/stylists/<%= stylist.id %>"><%= stylist.name %></a></li>
+  <% end %>
+  </ul>
 
-<% else %>
+  <% else %>
 
-<h5>Currently there are no stylists at this salon</h5>
+  <h5>Currently there are no stylists at this salon</h5>
 
-<% end %>
+  <% end %>
 
-<form action="/stylists" method="post">
-  <label for="new-stylist-name">Stylist Name:</label>
-  <input type="text" id="new-stylist-name" name="new-stylist-name">
-  <button type="submit" class="btn">Add stylist</button>
-</form>
+  <form action="/stylists" method="post">
+    <label for="new-stylist-name">Stylist Name:</label>
+    <input type="text" id="new-stylist-name" name="new-stylist-name">
+    <button type="submit" class="btn">Add stylist</button>
+  </form>
+</div>
