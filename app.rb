@@ -30,3 +30,9 @@ patch('/stylists/:id') do
   @stylist.update({:name => params.fetch('stylist-name')})
   redirect "/stylists/#{params.fetch('id').to_i}"
 end
+
+delete('/stylists/:id') do
+  @stylist = Stylist.find(params.fetch('id').to_i)
+  @stylist.delete()
+  redirect "/stylists"
+end

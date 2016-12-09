@@ -7,3 +7,8 @@
   <input type="text" id="city-name" name="stylist-name">
   <button type="submit" class="btn">Update Stylist</button>
 </form>
+<form action="/stylists/<%= @stylist.id %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit" class="btn">Delete stylist</button>
+</form>
+<a href="/stylists">Return Home</a>

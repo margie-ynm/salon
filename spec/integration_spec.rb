@@ -39,6 +39,13 @@ describe("Stylist RESTful routes", {:type => :feature}) do
       expect(page).to have_content("Danny Smith")
     end
   end
-
+  describe("DELETE stylist") do
+    it('allows a user to delete a stylist') do
+      visit("/stylists/#{@stylist.id}")
+      click_button('Delete stylist')
+      expect(page).not_to have_content(@stylist.name)
+      expect(Stylist.find(@stylist.id)).to eq(nil)
+    end
+  end
 
 end
