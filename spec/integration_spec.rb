@@ -31,6 +31,14 @@ describe("Stylist RESTful routes", {:type => :feature}) do
       expect(page).to have_content("Dan")
     end
   end
+  describe("PATCH stylist") do
+    it('allows a user to update a stylist') do
+      visit("/stylists/#{@stylist.id}")
+      fill_in('stylist-name', :with => "Danny Smith")
+      click_button('Update Stylist')
+      expect(page).to have_content("Danny Smith")
+    end
+  end
 
 
 end

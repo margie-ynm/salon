@@ -24,3 +24,9 @@ get('/stylists/:id') do
   @stylist = Stylist.find(params.fetch('id').to_i)
   erb(:stylist_detail)
 end
+
+patch('/stylists/:id') do
+  @stylist = Stylist.find(params.fetch('id').to_i)
+  @stylist.update({:name => params.fetch('stylist-name')})
+  redirect "/stylists/#{params.fetch('id').to_i}"
+end
