@@ -54,4 +54,11 @@ describe(Stylist) do
       @stylist.delete()
     end
   end
+  describe('#clients') do
+    it('returns an array of clients for that stylist') do
+      @stylist.save()
+      client = Client.new(:name => 'Bobby')
+      expect(@stylist.clients()).to eq(([@client, @client2]))
+    end
+  end
 end

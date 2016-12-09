@@ -10,6 +10,7 @@ describe(Client) do
     it('adds attributes to class') do
       # @client = Client.new(:name => 'Tammy')
       expect(@client.name).to eq('Tammy')
+      expect(@client.stylist_id).to eq(nil)
     end
   end
   describe('.all') do

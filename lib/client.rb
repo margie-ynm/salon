@@ -1,14 +1,15 @@
 class Client
-  attr_reader(:name, :id)
+  attr_reader(:name, :id, :stylist_id)
 
     define_method(:initialize) do |attributes|
       @name = attributes.fetch(:name)
       @id = attributes.fetch(:id, nil)
+      @stylist_id = attributes.fetch(:stylist_id, nil)
     end
 
     define_singleton_method(:all) do
       DB.exec("SELECT * FROM clients;").map do |client|
-        Client.new({:name => client.fetch('name'), :id => client.fetch('id').to_i})
+        Client.new({:name => client.fetch('name'), :id => client.fetch('id').to_i, :stylist_id => ('stylist_id')})
       end
     end
 
