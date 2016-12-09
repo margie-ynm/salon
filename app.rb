@@ -19,3 +19,8 @@ post('/stylists') do
   Stylist.new({:name => name}).save
   redirect('/stylists')
 end
+
+get('/stylists/:id') do
+  @stylist = Stylist.find(params.fetch('id').to_i)
+  erb(:stylist_detail)
+end
