@@ -12,7 +12,7 @@ attr_reader(:name, :id)
       Stylist.new({:name => stylist.fetch('name'), :id => stylist.fetch('id').to_i})
     end
   end
-  
+
   define_method(:==) do |other|
     self.name().==(other.name) && self.id.==(other.id)
   end
@@ -22,4 +22,10 @@ attr_reader(:name, :id)
     @id = result.first.fetch('id').to_i
   end
 
+  define_singleton_method(:find) do |id|
+    matches = Stylist.all.keep_if do |stylist|
+      stylist.id == id
+    end
+    matches.first
+  end
 end

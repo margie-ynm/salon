@@ -2,13 +2,14 @@ require('spec_helper.rb')
 
 describe(Stylist) do
   before(:each) do
-  @stylist = Stylist.new(:name => 'Gwen')
+  @gwen = Stylist.new(:name => 'Gwen')
+  @bob = Stylist.new(:name => 'Bob')
   end
 
   describe('#initialize') do
     it('adds attributes to class') do
-      # @stylist = Stylist.new(:name => 'Gwen')
-      expect(@stylist.name).to eq('Gwen')
+      # @gwen = Stylist.new(:name => 'Gwen')
+      expect(@gwen.name).to eq('Gwen')
     end
   end
   describe('.all') do
@@ -19,13 +20,31 @@ describe(Stylist) do
   describe('.==') do
     it('two instances with the same name and id will be equal') do
       stylist = Stylist.new(:name => 'Gwen')
-      expect(@stylist).to eq(stylist)
+      expect(@gwen).to eq(stylist)
     end
   end
   describe('#save') do
     it('will save a stylist to a database') do
-      @stylist.save()
-      expect(Stylist.all).to eq([@stylist])
+      @gwen.save()
+      expect(Stylist.all).to eq([@gwen])
+    end
+    it('will add an id to the stylist') do
+      @gwen.save()
+      expect(@gwen.id.class).to eq(Fixnum)
+    end
+  end
+  describe(".find") do
+    it('lets you find a stylist by its id') do
+      @gwen.save()
+      @bob.save()
+      expect(Stylist.find(@gwen.id)).to eq(@gwen)
+    end
+  end
+  describe('#update') do
+    it('lets you update a city in the database') do
+      @gwen.save()
+      @gwen.update({:name => 'Shawna'})
+      expect(@gwen.name).to eq('Shawna')
     end
   end
 end
