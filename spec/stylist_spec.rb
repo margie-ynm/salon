@@ -22,4 +22,10 @@ describe(Stylist) do
       expect(@stylist).to eq(stylist)
     end
   end
+  describe('#save') do
+    it('will save a stylist to a database') do
+      @stylist.save()
+      expect(Stylist.all).to eq([@stylist])
+    end
+  end
 end
