@@ -1,22 +1,22 @@
 # _Hair Salon_
 
-#### _Input Stylists and clients for hair salon, 12/09/2016_
+#### _Input stylists and clients for a hair salon, 12/09/2016_
 
 #### By _**Margie Nevarez**_
 
 ## Description
 
-_The application navigates the user to a home page where they can begin adding stylists to a list. After submission, the user is able to click on a stylist and add clients(s) for the stylist. The user is also able to update and delete either a Stylist or client from database._
+_The application navigates the user to a home page where they can begin adding stylists to a list. After submission, the user is able to click on a stylist and add clients(s) for the stylist. The user is also able to update and delete either a stylist or client from database._
 
 ## Setup/Installation Requirements
 
 * _Make sure you have postgres installed and running._
 * _run psql in terminal, then:_
-Guest=# `CREATE DATABASE hair_salon;`
-Guest=#`\c hair_salon;`
-hair_salon=# `CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);`
-hair_salon=# `CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);`
-hair_salon=# `CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;`
+* Yourusername=# `CREATE DATABASE hair_salon;`
+* Yourusername=#`\c hair_salon;`
+* hair_salon=# `CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);`
+* hair_salon=# `CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);`
+* hair_salon=# `CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;`
 
 * _Make sure you have git, ruby, and bundler gem installed._
 * _From the command line type "git clone https://github.com/margie-ynm/salon" to download the webapp files._
