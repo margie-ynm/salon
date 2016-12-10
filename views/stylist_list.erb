@@ -11,13 +11,15 @@
 
   <% else %>
 
-  <h5>Currently there are no stylists at this salon</h5>
+  <h4>Currently there are no stylists at this salon.</h4>
 
   <% end %>
 
   <form action="/stylists" method="post">
-    <label for="new-stylist-name">Stylist Name:</label>
+    <label for="new-stylist-name"><h5>Stylist Name:</h5></label>
     <input type="text" id="new-stylist-name" name="new-stylist-name">
-    <button type="submit" class="btn">Add stylist</button>
+    <button type="submit" class="btn green">Add stylist</button>
   </form>
 </div>
+
+<a href="/clients" class="btn right black">View current clients</a>

@@ -1,15 +1,24 @@
 <h1>All Clients</h1>
 
 <% if @clients.any?() %>
-<h3>Below are the clients for the hair salon</h3>
-<ul>
-<% @clients.each do |client| %>
-  <li><a href="/clients/<%= client.id %>"><%= client.name %></a></li>
-<% end %>
-</ul>
+<center>
+  <h3>Below are the clients for the hair salon</h3>
+  <ul>
+  <% @clients.each do |client| %>
+    <li><a href="/clients/<%= client.id %>"><%= client.name %></a></li>
+  <% end %>
+  </ul>
+</center>
 
 <% else %>
 
-<h5>Currently there are no clients at this salon</h5>
-
+<h4><center>Currently there are no clients at this salon.</center></h4>
+<br>
+<h5><center>Add a client under a stylist <a href="/stylists">here</center></a></h5>
 <% end %>
+
+<hr>
+
+<div class="container">
+  <a href="/stylists">Return Home</a>
+</div>

@@ -1,15 +1,15 @@
 <h1><%= @stylist.name %></h1>
 
-<h5>Update Details</h5>
+<h4>Update Details</h4>
 <form action="/stylists/<%= @stylist.id %>" method="post">
   <input name="_method" type="hidden" value="patch">
-  <label for="stylist-name">Stylist Name:</label>
+  <label for="stylist-name"><h5>Stylist Name:</h5></label>
   <input type="text" id="city-name" name="stylist-name">
-  <button type="submit" class="btn">Update Stylist</button>
+  <button type="submit" class="btn black">Update Stylist</button>
 </form>
 <form action="/stylists/<%= @stylist.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
-  <button type="submit" class="btn">Delete stylist</button>
+  <button type="submit" class="btn red right">Delete stylist</button>
 </form>
 <hr>
 <% if @stylist.clients().any?() %>
@@ -30,10 +30,10 @@
 <form action="/stylists/<%= @stylist.id() %>" method="post">
   <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
 
-  <label for="new-client-name">Client Name:</label>
+  <label for="new-client-name"><h5>Client Name:</h6></label>
   <input id="new-client-name" name="new-client-name" type="text">
 
-  <button type="submit" class="btn">Add client</button>
+  <button type="submit" class="btn green">Add client</button>
 </form>
 
 <hr>

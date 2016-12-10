@@ -1,17 +1,20 @@
 <h1><%= @client.name %></h1>
 
-<h5>Update Details</h5>
+<h3>Update Details</h3>
 <form action="/clients/<%= @client.id %>" method="post">
   <input name="_method" type="hidden" value="patch">
-  <label for="client-name">Client Name:</label>
+  <label for="client-name"><h5>Client Name:</h5></label>
   <input type="text" id="city-name" name="client-name">
-  <button type="submit" class="btn">Update Client</button>
+  <button type="submit" class="btn black">Update Client</button>
 </form>
 <form action="/clients/<%= @client.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
-  <button type="submit" class="btn">Delete client</button>
+  <button type="submit" class="btn red right">Delete client</button>
 </form>
 <hr>
 <div class="container">
   <a href="/stylists">Return Home</a>
+  <br>
+  <br>
+  <a href="/clients">View all clients</a>
 </div>
